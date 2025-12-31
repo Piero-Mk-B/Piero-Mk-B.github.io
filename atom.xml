@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-12-31T10:20:18.036Z</updated>
+  <updated>2025-12-31T15:56:52.425Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2025</title>
+    <link href="http://example.com/2025/12/31/2025/"/>
+    <id>http://example.com/2025/12/31/2025/</id>
+    <published>2025-12-31T15:54:55.000Z</published>
+    <updated>2025-12-31T15:56:52.425Z</updated>
+    
+    <content type="html"><![CDATA[<p>下書き下書き</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;下書き下書き&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>双盘位群晖硬盘扩容</title>
+    <link href="http://example.com/2024/02/06/%E5%8F%8C%E7%9B%98%E4%BD%8D%E7%BE%A4%E6%99%96%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
+    <id>http://example.com/2024/02/06/%E5%8F%8C%E7%9B%98%E4%BD%8D%E7%BE%A4%E6%99%96%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/</id>
+    <published>2024-02-06T11:39:37.000Z</published>
+    <updated>2024-02-06T12:21:04.563Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的DS220+双盘位8t还是太小了，其实1年前就装满了，靠PC上的7tHDD与1tSSD撑到现在，感觉还是少了点。<br>7E10 可惜只有10t，噪音非常可以，听了HC550的那个噪音不买机柜不行。<br>关键是basic模式下更换硬盘。<br>BASIC模式其实已经脱离了NAS的初衷，但是4盘位我又用不上</p><p>群晖系统版本7.2.1<br>不过看6.2的时候就可以用了。</p><p>1.关机<br>2.拆下不需要更换的那块硬盘<br>3.装上新的硬盘<br>4.开机，进入控制面板-硬件与电源-静音。&lt;硬盘错误NAS会嘀嘀嘀响&gt;<br>5.打开存储管理器-HDD/SSD-管理可用硬盘-更改RAID类别-选择需要被替换硬盘的存储池（即现在还留着的那块）<br>6.选raid1 -下一步<br>7.等待更改RAID类型结束 3.5T花了差不多12小时.完成后差不多半小时可以弄好后面的步骤<br>8.关机，拔出老硬盘（已经被备份的那块），把新的单独插着（很重要，降级的时候有用）<br>9.开机，把滴滴声关了，启用SSH，用SSH工具登录群晖<br><code>sudo -i</code><br><code>cat /proc/mdstat</code><br>看到的md0、md1都是群晖的系统分区和交换分区，md2就是留下的那块，再核对一下block是否最大，再输入<br><code>mdadm --grow --raid-devices=1 --force /dev/md2</code><br>最后会显示<br><code>raid_disks for /dev/md2 set to 1</code><br>10.关机，插回第二步那块不需要更换的硬盘，开机，静音（其实把存储空间异常那个勾去掉就可以，但要记得勾回来）<br>11.存储管理器-按照提示扩容存储空间即可。<br>12.如果共享文件夹有加密，记得去控制面板把密给解了。<br>参考<br><a href="https://post.smzdm.com/p/a5or6n87/">https://post.smzdm.com/p/a5or6n87/</a><br>下面还有人说全盘镜像也可以，下次试试看。<br><a href="https://www.bilibili.com/video/BV1n5411D7gM">https://www.bilibili.com/video/BV1n5411D7gM</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;我的DS220+双盘位8t还是太小了，其实1年前就装满了，靠PC上的7tHDD与1tSSD撑到现在，感觉还是少了点。&lt;br&gt;7E10 可惜只有10t，噪音非常可以，听了HC550的那个噪音不买机柜不行。&lt;br&gt;关键是basic模式下更换硬盘。&lt;br&gt;BASIC模式其实已经脱</summary>
+      
+    
+    
+    
+    <category term="Synology" scheme="http://example.com/categories/Synology/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2023</title>

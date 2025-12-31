@@ -12,7 +12,7 @@
 
 
 
-<title>categories | Zwielicht</title>
+<title>双盘位群晖硬盘扩容 | Zwielicht</title>
 
 
 
@@ -142,107 +142,78 @@
     }
 </script>
         <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">双盘位群晖硬盘扩容</h1>
             
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Shrike</a>
+                    
 
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 6, 2024&nbsp;&nbsp;19:39:37</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Synology/">Synology</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
 
-
-    <div class="container">
-        <div class="post-wrap categories">
-            <h2 class="post-title">-&nbsp;Categories&nbsp;-</h2>
-            <div class="categories-card">
-                
-                    
-                    <div class="card-item">
-                        <div class="categories">
-                            <a href="/categories/%E6%9D%82/">
-                                <h3>
-                                    <i class="iconfont icon-category" style="padding-right:3px"></i>
-                                    杂
-                                </h3>
-                            </a>
-                            
-                                
-                                
-                                    <article class="archive-item">
-                                        <a class="archive-item-link"
-                                           href="/2021/06/25/%E9%BC%A0%E6%A0%87%E6%8D%A2%E5%BE%AE%E5%8A%A8/">换微动</a>
-                                    </article>
-                                
-                            
-                            
-                        </div>
-                    </div>
-                
-                    
-                    <div class="card-item">
-                        <div class="categories">
-                            <a href="/categories/hexo/">
-                                <h3>
-                                    <i class="iconfont icon-category" style="padding-right:3px"></i>
-                                    hexo
-                                </h3>
-                            </a>
-                            
-                                
-                                
-                                    <article class="archive-item">
-                                        <a class="archive-item-link"
-                                           href="/2021/05/20/hexo%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/">hexo的基础用法</a>
-                                    </article>
-                                
-                            
-                            
-                        </div>
-                    </div>
-                
-                    
-                    <div class="card-item">
-                        <div class="categories">
-                            <a href="/categories/%E6%96%87/">
-                                <h3>
-                                    <i class="iconfont icon-category" style="padding-right:3px"></i>
-                                    文
-                                </h3>
-                            </a>
-                            
-                                
-                                
-                                    <article class="archive-item">
-                                        <a class="archive-item-link"
-                                           href="/2021/04/02/2020%E5%B9%B4%E5%88%9D%E6%94%B6%E8%97%8F%E7%9A%84%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">2020年初收藏的一篇文章</a>
-                                    </article>
-                                
-                            
-                            
-                        </div>
-                    </div>
-                
-                    
-                    <div class="card-item">
-                        <div class="categories">
-                            <a href="/categories/Synology/">
-                                <h3>
-                                    <i class="iconfont icon-category" style="padding-right:3px"></i>
-                                    Synology
-                                </h3>
-                            </a>
-                            
-                                
-                                
-                                    <article class="archive-item">
-                                        <a class="archive-item-link"
-                                           href="/2024/02/06/%E5%8F%8C%E7%9B%98%E4%BD%8D%E7%BE%A4%E6%99%96%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/">双盘位群晖硬盘扩容</a>
-                                    </article>
-                                
-                            
-                            
-                        </div>
-                    </div>
-                
-            </div>
+        <div class="post-content">
+            <p>我的DS220+双盘位8t还是太小了，其实1年前就装满了，靠PC上的7tHDD与1tSSD撑到现在，感觉还是少了点。<br>7E10 可惜只有10t，噪音非常可以，听了HC550的那个噪音不买机柜不行。<br>关键是basic模式下更换硬盘。<br>BASIC模式其实已经脱离了NAS的初衷，但是4盘位我又用不上</p>
+<p>群晖系统版本7.2.1<br>不过看6.2的时候就可以用了。</p>
+<p>1.关机<br>2.拆下不需要更换的那块硬盘<br>3.装上新的硬盘<br>4.开机，进入控制面板-硬件与电源-静音。&lt;硬盘错误NAS会嘀嘀嘀响&gt;<br>5.打开存储管理器-HDD/SSD-管理可用硬盘-更改RAID类别-选择需要被替换硬盘的存储池（即现在还留着的那块）<br>6.选raid1 -下一步<br>7.等待更改RAID类型结束 3.5T花了差不多12小时.完成后差不多半小时可以弄好后面的步骤<br>8.关机，拔出老硬盘（已经被备份的那块），把新的单独插着（很重要，降级的时候有用）<br>9.开机，把滴滴声关了，启用SSH，用SSH工具登录群晖<br><code>sudo -i</code><br><code>cat /proc/mdstat</code><br>看到的md0、md1都是群晖的系统分区和交换分区，md2就是留下的那块，再核对一下block是否最大，再输入<br><code>mdadm --grow --raid-devices=1 --force /dev/md2</code><br>最后会显示<br><code>raid_disks for /dev/md2 set to 1</code><br>10.关机，插回第二步那块不需要更换的硬盘，开机，静音（其实把存储空间异常那个勾去掉就可以，但要记得勾回来）<br>11.存储管理器-按照提示扩容存储空间即可。<br>12.如果共享文件夹有加密，记得去控制面板把密给解了。<br>参考<br><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/a5or6n87/">https://post.smzdm.com/p/a5or6n87/</a><br>下面还有人说全盘镜像也可以，下次试试看。<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1n5411D7gM">https://www.bilibili.com/video/BV1n5411D7gM</a></p>
 
         </div>
-    </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2025/12/31/2025/">2025</a>
+            
+            
+            <a class="next" rel="next" href="/2023/12/31/2023/">2023</a>
+            
+        </section>
+
+
+    </article>
+</div>
 
         </div>
         <footer id="footer" class="footer">
